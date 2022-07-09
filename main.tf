@@ -42,6 +42,22 @@ module "adb_nsg" {
   rgname              = var.rgname
 }
 
+module "adb_private_subnet_nsg_association" {
+  source    = "./modules/nsg_association"
+
+  nsg_id= module.adb_nsg.nsg_id
+  subnet_id = module.adb_private_subnet.subnet_id
+
+}
+
+module "adb_public_subnet_nsg_association" {
+  source    = "./modules/nsg_association"
+
+  nsg_id= module.adb_nsg.nsg_id
+  subnet_id = module.adb_public_subnet.subnet_id
+
+}
+
 module "dp_datastore" {
   source    = "./modules/storage"
 
