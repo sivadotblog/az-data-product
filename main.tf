@@ -5,7 +5,7 @@ module "resource_group" {
   location  = var.location
 }
 
-module "vnet" {
+module "adb_vnet" {
   source    = "./modules/vnet"
 
   name                = var.adb_vnet
@@ -14,7 +14,7 @@ module "vnet" {
   resource_group_name = var.rgname
 }
 
-module "subnet" {
+module "adb_private_subnet" {
   source    = "./modules/subnet"
 
   name                = var.adb_private_subnet
@@ -23,7 +23,7 @@ module "subnet" {
   resource_group_name = var.rgname
 }
 
-module "subnet" {
+module "adb_public_subnet" {
   source    = "./modules/subnet"
 
   name                = var.adb_public_subnet
