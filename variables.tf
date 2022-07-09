@@ -51,3 +51,8 @@ variable "adb_nsg" {
     type = string
 
 }
+
+variable "dp_datastore" {
+    type = string
+}
+  
