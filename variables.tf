@@ -1,15 +1,15 @@
-variable "az-tenant_id" {
+variable "az-tenant-id" {
   type = string
 }
 
-variable "az-subscription_id" {
+variable "az-subscription-id" {
   type = string
 }
 
-variable "az-client_id" {
+variable "az-client-id" {
   type = string
 }
 
-variable "az-client_secret" {
+variable "az-client-secret" {
   type = string
 }
