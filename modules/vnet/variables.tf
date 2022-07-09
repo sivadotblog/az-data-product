@@ -9,9 +9,9 @@ variable "location" {
 }
 
 variable "vnet" {
-    type = list(string)
+    type = string
 }
 variable "vnet_address_space" {
-    type = string
+    type = list(string)
 }
 
