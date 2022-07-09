@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "data-products" {
-  name     = "example"
+  name     = "data-products"
   location = "eastus"
 }
