@@ -41,3 +41,11 @@ module "adb_nsg" {
   location            = var.location
   rgname              = var.rgname
 }
+
+module "dp_datastore" {
+  source    = "./modules/storage"
+
+  storage_account_name= var.dp_datastore
+  location            = var.location
+  rgname              = var.rgname
+}
