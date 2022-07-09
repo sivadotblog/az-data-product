@@ -21,6 +21,7 @@ module "adb_private_subnet" {
   subnet_address_space  = var.adb_private_subnet_address_space
   location              = var.location
   rgname = var.rgname
+  vnet = var.adb_vnet
 }
 
 module "adb_public_subnet" {
@@ -30,4 +31,5 @@ module "adb_public_subnet" {
   subnet_address_space    = var.adb_public_subnet_address_space
   location                = var.location
   rgname                  = var.rgname
+  vnet = var.adb_vnet
 }
