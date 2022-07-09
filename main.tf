@@ -33,3 +33,11 @@ module "adb_public_subnet" {
   rgname                  = var.rgname
   vnet = var.adb_vnet
 }
+
+module "adb_nsg" {
+  source    = "./modules/nsg"
+
+  nsg                 = var.adb_nsg
+  location            = var.location
+  rgname              = var.rgname
+}

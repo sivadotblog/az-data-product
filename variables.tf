@@ -46,3 +46,8 @@ variable "adb_public_subnet" {
 variable "adb_public_subnet_address_space" {
     type = list(string)
 }
+
+variable "adb_nsg" {
+    type = string
+
+}
