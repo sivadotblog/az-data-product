@@ -8,26 +8,26 @@ module "resource_group" {
 module "adb_vnet" {
   source    = "./modules/vnet"
 
-  name                = var.adb_vnet
-  address_space       = var.adb_vnet_address_space
+  vnet                = var.adb_vnet
+  vnet_address_space  = var.adb_vnet_address_space
   location            = var.location
-  resource_group_name = var.rgname
+  rgname = var.rgname
 }
 
 module "adb_private_subnet" {
   source    = "./modules/subnet"
 
-  name                = var.adb_private_subnet
-  address_space       = var.adb_private_subnet_address_space
-  location            = var.location
-  resource_group_name = var.rgname
+  subnet                = var.adb_private_subnet
+  subnet_address_space  = var.adb_private_subnet_address_space
+  location              = var.location
+  rgname = var.rgname
 }
 
 module "adb_public_subnet" {
   source    = "./modules/subnet"
 
-  name                = var.adb_public_subnet
-  address_space       = var.adb_public_subnet_address_space
-  location            = var.location
-  resource_group_name = var.rgname
+  subnet                  = var.adb_public_subnet
+  subnet_address_space    = var.adb_public_subnet_address_space
+  location                = var.location
+  rgname                  = var.rgname
 }
