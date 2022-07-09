@@ -28,7 +28,7 @@ variable "adb_vnet" {
     type = string
 }
 variable "adb_vnet_address_space" {
-    type = string
+    type = list(string)
 }
 
 variable "adb_private_subnet" {
@@ -36,7 +36,7 @@ variable "adb_private_subnet" {
 }
 
 variable "adb_private_subnet_address_space" {
-    type = string
+    type = list(string)
 }
 
 variable "adb_public_subnet" {
@@ -44,5 +44,5 @@ variable "adb_public_subnet" {
 }
 
 variable "adb_public_subnet_address_space" {
-    type = string
+    type = list(string)
 }
