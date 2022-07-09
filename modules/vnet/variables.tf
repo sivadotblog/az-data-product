@@ -15,10 +15,3 @@ variable "vnet_address_space" {
     type = string
 }
 
-variable "subnet" {
-    type = string
-}
-
-variable "subnet_address_space" {
-    type = string
-}
