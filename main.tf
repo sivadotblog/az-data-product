@@ -100,13 +100,11 @@ module "adb_dataproduct_ws" {
   adb_ws              = var.adb_ws
   resource_group_name = var.rgname
   location            = var.location
-
-  custom_parameters {
-    public_subnet_name = var.adb_public_subnet
-    private_subnet_name = var.adb_private_subnet
-    vnet_id =module.adb_vnet.vnet_id
-    nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
-    nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
-    storage_account_name = var.dp_datastore
+  public_subnet_name = var.adb_public_subnet
+  private_subnet_name = var.adb_private_subnet
+  vnet_id =module.adb_vnet.vnet_id
+  nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
+  nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
+  storage_account_name = var.dp_datastore
   }
 }
