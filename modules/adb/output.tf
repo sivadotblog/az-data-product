@@ -1,4 +1,4 @@
-output "rgname" {
-    description = "The RG  name"
-    value = azurerm_resource_group.rg.name
+output "workspace_url" {
+    value = azurerm_databricks_workspace.adb.workspace_url
 }
+
