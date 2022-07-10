@@ -30,7 +30,7 @@ variable "nsg_private_subnet_association_id" {
     type = string
 
 }
-variable "nsg_public_subnetassociation_id" {
+variable "nsg_public_subnet_association_id" {
     type = string
 
 }

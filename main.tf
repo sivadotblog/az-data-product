@@ -98,7 +98,7 @@ module "adb_dataproduct_ws" {
   source    = "./modules/adb"
 
   adb_ws              = var.adb_ws
-  resource_group_name = var.rgname
+  rgname = var.rgname
   location            = var.location
   public_subnet_name = var.adb_public_subnet
   private_subnet_name = var.adb_private_subnet
