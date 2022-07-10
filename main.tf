@@ -24,7 +24,7 @@ module "adb_private_subnet" {
   vnet = var.adb_vnet
 
     delegation {
-    name = "adb-databricks-del"
+    delegation_name = "adb-databricks-del"
 
     service_delegation {
       actions = [
@@ -32,7 +32,7 @@ module "adb_private_subnet" {
           "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
           "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
         ]
-      name = "Microsoft.Databricks/workspaces"
+      service_delegation_name = "Microsoft.Databricks/workspaces"
     }
   }
 
@@ -48,7 +48,7 @@ module "adb_public_subnet" {
   vnet = var.adb_vnet
     
     delegation {
-    name = "adb-databricks-del"
+    delegation_name = "adb-databricks-del"
 
     service_delegation {
       actions = [
@@ -56,7 +56,7 @@ module "adb_public_subnet" {
           "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
           "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
         ]
-      name = "Microsoft.Databricks/workspaces"
+      service_delegation_name = "Microsoft.Databricks/workspaces"
     }
   }
 
