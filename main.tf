@@ -106,5 +106,5 @@ module "adb_dataproduct_ws" {
   nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
   nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
   storage_account_name = var.dp_datastore
-  }
+ 
 }
