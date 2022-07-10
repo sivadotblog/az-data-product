@@ -1,4 +1,3 @@
-/*output "rgname" {
-    description = "The RG  name"
-    value = azurerm_resource_group.rg.name
-}*/
+output "vnet_id" {
+  value = azurerm_subnet.vnet.id
+}
