@@ -22,6 +22,20 @@ module "adb_private_subnet" {
   location              = var.location
   rgname = var.rgname
   vnet = var.adb_vnet
+
+    delegation {
+    name = "adb-databricks-del"
+
+    service_delegation {
+      actions = [
+          "Microsoft.Network/virtualNetworks/subnets/join/action",
+          "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
+          "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
+        ]
+      name = "Microsoft.Databricks/workspaces"
+    }
+  }
+
 }
 
 module "adb_public_subnet" {
@@ -32,6 +46,20 @@ module "adb_public_subnet" {
   location                = var.location
   rgname                  = var.rgname
   vnet = var.adb_vnet
+    
+    delegation {
+    name = "adb-databricks-del"
+
+    service_delegation {
+      actions = [
+          "Microsoft.Network/virtualNetworks/subnets/join/action",
+          "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
+          "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
+        ]
+      name = "Microsoft.Databricks/workspaces"
+    }
+  }
+
 }
 
 module "adb_nsg" {
@@ -64,4 +92,21 @@ module "dp_datastore" {
   storage_account_name= var.dp_datastore
   location            = var.location
   rgname              = var.rgname
+}
+
+module "adb_dataproduct_ws" {
+  source    = "./modules/adb"
+
+  name                = var.adb_ws
+  resource_group_name = var.rgname
+  location            = var.location
+
+  custom_parameters ={
+    public_subnet_name = var.adb_public_subnet
+    private_subnet_name = var.adb_private_subnet
+    virtual_network_id =module.adb_vnet.vnet_id
+    public_subnet_network_security_group_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
+    private_subnet_network_security_group_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
+    storage_account_name = var.dp_datastore
+  }
 }
