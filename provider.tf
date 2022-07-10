@@ -21,7 +21,8 @@ provider "azurerm" {
 }
 
 provider "databricks" {
-  azure_auth = {
+   features {}
+ /* azure_auth = {
     managed_resource_group = module.adb_dataproduct_ws.managed_resource_group_name
     azure_region           = var.location
     workspace_name         = var.adb_ws
@@ -30,5 +31,11 @@ provider "databricks" {
     client_secret          = var.az-client-secret
     tenant_id              = var.az-tenant-id
     subscription_id        = var.az-subscription-id
-  }
+  } */
+}
+
+data "databricks_current_user" "me" {}
+data "databricks_spark_version" "latest" {}
+data "databricks_node_type" "smallest" {
+  local_disk = true
 }
