@@ -56,3 +56,7 @@ variable "dp_datastore" {
     type = string
 }
   
+
+variable "adb_ws" {
+    type = string
+}

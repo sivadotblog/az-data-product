@@ -19,3 +19,15 @@ variable "subnet_address_space" {
 variable "vnet" {
     type = string
 }
+
+variable "delegation_name" {
+    type = string
+}
+
+variable "service_delegation_name" {
+    type = string
+}
+
+variable "actions" {
+    type = list(string)
+}
