@@ -20,13 +20,13 @@ provider "azurerm" {
   client_secret     = var.az-client-secret
 }
 
-data "databricks_current_user" "me" {
+/*data "databricks_current_user" "me" {
   depends_on = [module.adb_dataproduct_ws]
-}
+}*/
 
 provider "databricks" {
   # Configuration options
-  host = module.adb_dataproduct_ws.workspace_url
+  //host = module.adb_dataproduct_ws.workspace_url
      
 }
 
