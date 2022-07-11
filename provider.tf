@@ -7,6 +7,7 @@ terraform {
     databricks = {
       source = "databricks/databricks"
       version = "1.0.1"
+      configuration_aliases = [databricks.local, databricks.remote]
     }
   }
 }
@@ -21,8 +22,12 @@ provider "azurerm" {
 }
 
 provider "databricks" {
+  # Configuration options
+}
+
+ /*provider "databricks" {
    features {}
- /* azure_auth = {
+ azure_auth = {
     managed_resource_group = module.adb_dataproduct_ws.managed_resource_group_name
     azure_region           = var.location
     workspace_name         = var.adb_ws
@@ -31,11 +36,21 @@ provider "databricks" {
     client_secret          = var.az-client-secret
     tenant_id              = var.az-tenant-id
     subscription_id        = var.az-subscription-id
-  } */
+  } 
 }
 
-data "databricks_current_user" "me" {}
-data "databricks_spark_version" "latest" {}
+data "databricks_current_user" "me" {
+  depends_on = [azurerm_databricks_workspace.adb_dataproduct_ws]
+}
+data "databricks_spark_version" "latest" {
+  depends_on = [azurerm_databricks_workspace.adb_dataproduct_ws]
+}
 data "databricks_node_type" "smallest" {
   local_disk = true
+  depends_on = [azurerm_databricks_workspace.adb_dataproduct_ws]
 }
+*/
+
+
+
+

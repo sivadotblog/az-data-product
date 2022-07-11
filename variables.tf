@@ -60,3 +60,7 @@ variable "dp_datastore" {
 variable "adb_ws" {
     type = string
 }
+
+variable "adb_global_init_path" {
+    type = string
+}
