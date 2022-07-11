@@ -98,9 +98,9 @@ module "adb_dataproduct_ws" {
   storage_account_name = substr(replace(join("",[var.dp_datastore,var.adb_ws]), "-", ""),1,24)
 }
 
-/*module "adb_dataproduct_ws_global_init_sh" {
+module "adb_dataproduct_ws_global_init_sh" {
   source    = "./modules/adb/global_init"
   script_path =var.adb_global_init_path
   global_init_name = "global_init"
 
-}*/
+}
