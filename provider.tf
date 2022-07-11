@@ -26,8 +26,11 @@ data "databricks_current_user" "me" {
 
 provider "databricks" {
   # Configuration options
-  host = module.adb_dataproduct_ws.workspace_url
-
+  host                          = module.adb_dataproduct_ws.workspace_url
+  azure_workspace_resource_id   = module.adb_dataproduct_ws.id
+  azure_client_id               = var.az-client-id
+  azure_client_secret           = var.az-client-secret
+  azure_tenant_id               = var.az-tenant-id   
   /*  azure_auth = {
     managed_resource_group  = module.adb_dataproduct_ws.managed_resource_group_name
     azure_region            = var.location
