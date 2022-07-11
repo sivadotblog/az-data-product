@@ -26,8 +26,9 @@ data "databricks_current_user" "me" {
 
 provider "databricks" {
   # Configuration options
-  #host = module.adb_dataproduct_ws.workspace_url
-    azure_auth = {
+  host = module.adb_dataproduct_ws.workspace_url
+
+  /*  azure_auth = {
     managed_resource_group  = module.adb_dataproduct_ws.managed_resource_group_name
     azure_region            = var.location
     workspace_name          = var.adb_ws
@@ -36,24 +37,11 @@ provider "databricks" {
     client_secret           = var.client_secret
     tenant_id               = var.tenant_id
     subscription_id         = var.subscription_id
-  }
+  }*/
      
 }
 
- /*provider "databricks" {
-   features {}
- azure_auth = {
-    managed_resource_group = module.adb_dataproduct_ws.managed_resource_group_name
-    azure_region           = var.location
-    workspace_name         = var.adb_ws
-    resource_group         = var.rgname
-    client_id              = var.az-client-id
-    client_secret          = var.az-client-secret
-    tenant_id              = var.az-tenant-id
-    subscription_id        = var.az-subscription-id
-  } 
-}
-
+/*
 data "databricks_current_user" "me" {
   depends_on = [azurerm_databricks_workspace.adb_dataproduct_ws]
 }

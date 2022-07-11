@@ -96,7 +96,18 @@ module "adb_dataproduct_ws" {
   nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
   nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
   storage_account_name = substr(replace(join("",[var.dp_datastore,var.adb_ws]), "-", ""),1,24)
+
 }
+
+/*
+module "data-product-kv" {
+  source    = "./modules/azkv"
+
+  kvname              = var.kvname
+  rgname              = var.rgname
+  location            = var.location
+  tenant_id           = var.az-tenant-id
+}*/
 
 module "adb_dataproduct_ws_global_init_sh" {
   source    = "./modules/adb/global_init"

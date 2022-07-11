@@ -64,3 +64,7 @@ variable "adb_ws" {
 variable "adb_global_init_path" {
     type = string
 }
+
+variable "kvname" {
+    type = string
+}

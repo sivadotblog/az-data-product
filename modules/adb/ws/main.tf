@@ -13,6 +13,7 @@ resource "azurerm_databricks_workspace" "adb" {
     public_subnet_network_security_group_association_id   = var.nsg_public_subnet_association_id
     private_subnet_network_security_group_association_id  = var.nsg_private_subnet_association_id
     storage_account_name  = var.storage_account_name
+    storage_account_sku_name = "Standard_LRS"
   }
 
 }
