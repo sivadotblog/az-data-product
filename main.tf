@@ -84,7 +84,7 @@ module "dp_datastore" {
   rgname              = var.rgname
 }
 
-/*module "adb_dataproduct_ws" {
+module "adb_dataproduct_ws" {
   source    = "./modules/adb/ws"
 
   adb_ws              = var.adb_ws
@@ -96,7 +96,7 @@ module "dp_datastore" {
   nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
   nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
   storage_account_name = var.dp_datastore
-}*/
+}
 
 /*module "adb_dataproduct_ws_global_init_sh" {
   source    = "./modules/adb/global_init"
