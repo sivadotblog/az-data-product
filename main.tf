@@ -95,7 +95,7 @@ module "adb_dataproduct_ws" {
   vnet_id =module.adb_vnet.vnet_id
   nsg_public_subnet_association_id=module.adb_public_subnet_nsg_association.nsg_association_id
   nsg_private_subnet_association_id=module.adb_private_subnet_nsg_association.nsg_association_id
-  storage_account_name = replace(join("",[var.dp_datastore,var.adb_ws]), "-", "")
+  storage_account_name = substr(replace(join("",[var.dp_datastore,var.adb_ws]), "-", ""),1,24)
 }
 
 /*module "adb_dataproduct_ws_global_init_sh" {
