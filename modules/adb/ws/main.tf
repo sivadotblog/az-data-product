@@ -6,7 +6,7 @@ resource "azurerm_databricks_workspace" "adb" {
   #public_network_access_enabled = false
 
   custom_parameters {
-    no_public_ip        = "true"
+    no_public_ip        = "false"
     public_subnet_name  = var.public_subnet_name
     private_subnet_name = var.private_subnet_name
     virtual_network_id   = var.vnet_id
