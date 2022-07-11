@@ -3,7 +3,7 @@ resource "azurerm_databricks_workspace" "adb" {
   resource_group_name = var.rgname
   location            = var.location
   sku                 = "standard"
-  public_network_access_enabled = false
+  #public_network_access_enabled = false
 
   custom_parameters {
     no_public_ip        = "true"
