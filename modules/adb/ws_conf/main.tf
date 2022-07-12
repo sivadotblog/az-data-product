@@ -3,7 +3,7 @@ terraform {
 
     databricks = {
       source = "databricks/databricks"
-      }
+    }
   }
 }
 
@@ -14,6 +14,6 @@ resource "databricks_directory" "dir" {
 resource "databricks_workspace_conf" "this" {
   custom_config = {
     "enableTokensConfig" : true
-    "enableDatabricksAutologging":true
+
   }
 }
