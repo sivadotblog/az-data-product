@@ -99,15 +99,15 @@ module "adb_dataproduct_ws" {
 
 }
 
-/*
-module "data-product-kv" {
-  source    = "./modules/azkv"
 
-  kvname              = var.kvname
-  rgname              = var.rgname
-  location            = var.location
-  tenant_id           = var.az-tenant-id
-}*/
+module "data-product-kv" {
+  source = "./modules/azkv"
+
+  kvname    = var.kvname
+  rgname    = var.rgname
+  location  = var.location
+  tenant_id = var.az-tenant-id
+}
 
 module "adb_dataproduct_ws_global_init_sh" {
   source           = "./modules/adb/global_init"
@@ -115,7 +115,8 @@ module "adb_dataproduct_ws_global_init_sh" {
   global_init_name = "global_init"
 
 }
-/*module "adb_ws_conf" {
-  source    = "./modules/adb/ws_conf"
-  env      = "DEV"
-}*/
+
+module "adb_ws_conf" {
+  source = "./modules/adb/ws_conf"
+  env    = "DEV"
+}
