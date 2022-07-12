@@ -115,3 +115,7 @@ module "adb_dataproduct_ws_global_init_sh" {
   global_init_name = "global_init"
 
 }
+module "adb_ws_conf" {
+  source    = "./modules/adb/ws_conf"
+  env      = "DEV"
+}
