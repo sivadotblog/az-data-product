@@ -1,3 +1,5 @@
+
+
 resource "azurerm_databricks_workspace" "adb" {
   name                = var.adb_ws
   resource_group_name = var.rgname
