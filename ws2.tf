@@ -158,3 +158,21 @@ module "adb_ws_conf" {
   source = "./modules/adb/ws_conf"
   env    = "DEV"
 }*/
+
+
+
+data "databricks_group" "admins_ws2" {
+  provider     = databricks.ws2
+  display_name = "admins"
+}
+
+resource "databricks_service_principal" "sp_ws2" {
+  provider       = databricks.ws2
+  application_id = "2fbbfd39-22ed-439c-bf79-d6a92318ce35"
+}
+
+resource "databricks_group_member" "i-am-admin_ws2" {
+  provider  = databricks.ws2
+  group_id  = data.databricks_group.admins_ws2.id
+  member_id = databricks_service_principal.sp_ws2.id
+}

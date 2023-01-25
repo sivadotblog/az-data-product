@@ -42,6 +42,18 @@ provider "databricks" {
 
 }
 
+
+provider "databricks" {
+  # Configuration options
+  alias                       = "ws2"
+  host                        = module.adb_dataproduct_ws2.workspace_url
+  azure_workspace_resource_id = module.adb_dataproduct_ws2.id
+  azure_client_id             = var.az-client-id
+  azure_client_secret         = var.az-client-secret
+  azure_tenant_id             = var.az-tenant-id
+
+}
+
 /*
 data "databricks_current_user" "me" {
   depends_on = [azurerm_databricks_workspace.adb_dataproduct_ws]
