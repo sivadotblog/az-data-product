@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+
+    databricks = {
+      source = "databricks/databricks"
+    }
+  }
+}
+
+
 data "databricks_group" "admins" {
   display_name = "admins"
 }
