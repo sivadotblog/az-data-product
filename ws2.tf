@@ -95,8 +95,8 @@ module "adb_nsg_ws2" {
 module "adb_private_subnet_nsg_association_ws2" {
   source = "./modules/nsg_association"
 
-  nsg_id    = module.adb_nsg.nsg_id
-  subnet_id = module.adb_private_subnet.subnet_id
+  nsg_id    = module.adb_nsg_ws2.nsg_id
+  subnet_id = module.adb_private_subnet_ws2.subnet_id
   depends_on = [
     module.adb_private_subnet_ws2
   ]
@@ -106,8 +106,8 @@ module "adb_private_subnet_nsg_association_ws2" {
 module "adb_public_subnet_nsg_association_ws2" {
   source = "./modules/nsg_association"
 
-  nsg_id    = module.adb_nsg.nsg_id
-  subnet_id = module.adb_public_subnet.subnet_id
+  nsg_id    = module.adb_nsg_ws2.nsg_id
+  subnet_id = module.adb_public_subnet_ws2.subnet_id
   depends_on = [
     module.adb_public_subnet_ws2
   ]
@@ -133,9 +133,9 @@ module "adb_dataproduct_ws2" {
   location                          = local.ws2.location
   public_subnet_name                = local.ws2.adb_public_subnet
   private_subnet_name               = local.ws2.adb_private_subnet
-  vnet_id                           = module.adb_vnet.vnet_id
-  nsg_public_subnet_association_id  = module.adb_public_subnet_nsg_association.nsg_association_id
-  nsg_private_subnet_association_id = module.adb_private_subnet_nsg_association.nsg_association_id
+  vnet_id                           = module.adb_vnet_ws2.vnet_id
+  nsg_public_subnet_association_id  = module.adb_public_subnet_nsg_association_ws2.nsg_association_id
+  nsg_private_subnet_association_id = module.adb_private_subnet_nsg_association_ws2.nsg_association_id
   storage_account_name              = substr(replace(join("", [local.ws2.dp_datastore, local.ws2.adb_ws]), "-", ""), 1, 24)
   depends_on = [
     module.adb_private_subnet_nsg_association_ws2,
