@@ -32,6 +32,6 @@ jobs:
         shell: bash
 
       - name: Terraform Apply
-       run: |
-         terraform apply -auto-approve
-       shell: bash
+        run: |
+          terraform apply -auto-approve
+        shell: bash
