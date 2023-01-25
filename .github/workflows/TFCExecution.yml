@@ -30,3 +30,8 @@ jobs:
           terraform init
           terraform plan
         shell: bash
+        
+      -name: Terraform Apply
+       run: |
+         terraform apply -auto-approve
+       shell: bash

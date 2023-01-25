@@ -12,6 +12,9 @@ module "adb_vnet" {
   vnet_address_space = var.adb_vnet_address_space
   location           = var.location
   rgname             = var.rgname
+  depends_on = [
+    module.resource_group
+  ]
 }
 
 module "adb_private_subnet" {
@@ -31,6 +34,11 @@ module "adb_private_subnet" {
   ]
   service_delegation_name = "Microsoft.Databricks/workspaces"
 
+  depends_on = [
+    module.resource_group,
+    module.adb_vnet
+
+  ]
 }
 
 module "adb_public_subnet" {
@@ -49,7 +57,10 @@ module "adb_public_subnet" {
   ]
   service_delegation_name = "Microsoft.Databricks/workspaces"
 
-
+  depends_on = [
+    module.resource_group,
+    module.adb_vnet
+  ]
 }
 
 module "adb_nsg" {
@@ -58,6 +69,9 @@ module "adb_nsg" {
   nsg      = var.adb_nsg
   location = var.location
   rgname   = var.rgname
+  depends_on = [
+    module.resource_group
+  ]
 }
 
 module "adb_private_subnet_nsg_association" {
@@ -65,6 +79,9 @@ module "adb_private_subnet_nsg_association" {
 
   nsg_id    = module.adb_nsg.nsg_id
   subnet_id = module.adb_private_subnet.subnet_id
+  depends_on = [
+    module.adb_private_subnet
+  ]
 
 }
 
@@ -73,6 +90,9 @@ module "adb_public_subnet_nsg_association" {
 
   nsg_id    = module.adb_nsg.nsg_id
   subnet_id = module.adb_public_subnet.subnet_id
+  depends_on = [
+    module.adb_public_subnet
+  ]
 
 }
 
@@ -82,6 +102,9 @@ module "dp_datastore" {
   storage_account_name = var.dp_datastore
   location             = var.location
   rgname               = var.rgname
+  depends_on = [
+    module.resource_group,
+  ]
 }
 
 module "adb_dataproduct_ws" {
@@ -96,11 +119,16 @@ module "adb_dataproduct_ws" {
   nsg_public_subnet_association_id  = module.adb_public_subnet_nsg_association.nsg_association_id
   nsg_private_subnet_association_id = module.adb_private_subnet_nsg_association.nsg_association_id
   storage_account_name              = substr(replace(join("", [var.dp_datastore, var.adb_ws]), "-", ""), 1, 24)
+  depends_on = [
+    module.adb_private_subnet_nsg_association,
+    module.adb_public_subnet_nsg_association,
+    module.dp_datastore,
 
+  ]
 }
 
 
-
+/*
 module "adb_dataproduct_ws_global_init_sh" {
   source           = "./modules/adb/global_init"
   script_path      = var.adb_global_init_path
@@ -108,7 +136,7 @@ module "adb_dataproduct_ws_global_init_sh" {
 
 }
 
-/*module "adb_ws_conf" {
+module "adb_ws_conf" {
   source = "./modules/adb/ws_conf"
   env    = "DEV"
 }*/
