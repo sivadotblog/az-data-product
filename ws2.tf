@@ -176,3 +176,31 @@ resource "databricks_group_member" "i-am-admin_ws2" {
   group_id  = data.databricks_group.admins_ws2.id
   member_id = databricks_service_principal.sp_ws2.id
 }
+
+
+resource "databricks_user" "me_ws2" {
+  provider  = databricks.ws2
+  user_name = "sivanandha@live.com"
+}
+
+resource "databricks_group_member" "my_member_a_ws2" {
+  provider  = databricks.ws2
+  group_id  = data.databricks_group.admins_ws2.id
+  member_id = databricks_user.me_ws2.id
+}
+
+
+data "databricks_group" "admins" {
+
+  display_name = "admins"
+}
+resource "databricks_user" "me" {
+
+  user_name = "sivanandha@live.com"
+}
+
+resource "databricks_group_member" "my_member_a" {
+
+  group_id  = data.databricks_group.admins.id
+  member_id = databricks_user.me.id
+}
