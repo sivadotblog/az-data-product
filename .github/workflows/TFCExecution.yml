@@ -1,0 +1,33 @@
+#github actions to run terraform plan and apply
+name: TFCExecution
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  terraform-automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.2
+
+      - name: Terraform Login
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_hostname: app.terraform.io
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_wrapper: false
+
+      - name: Terraform Init & Plan
+        run: |
+          rm -rf *.tfstate*
+          terraform init
+          terraform plan
+        shell: bash
