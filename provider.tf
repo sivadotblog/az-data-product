@@ -46,8 +46,8 @@ provider "databricks" {
 provider "databricks" {
   # Configuration options
   alias                       = "ws2"
-  host                        = module.adb_dataproduct_ws2.workspace_url
-  azure_workspace_resource_id = module.adb_dataproduct_ws2.id
+  host                        = "adb-5389667620200582.2.azuredatabricks.net"
+  azure_workspace_resource_id = "/subscriptions/fa5459e8-a4e9-400e-9a71-23ba3cc212d4/resourceGroups/data-product-2/providers/Microsoft.Databricks/workspaces/adb-dataproduct-ws"
   azure_client_id             = var.az-client-id
   azure_client_secret         = var.az-client-secret
   azure_tenant_id             = var.az-tenant-id

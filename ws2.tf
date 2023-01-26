@@ -1,4 +1,4 @@
-locals {
+/*locals {
   ws2 = {
     rgname                           = "data-product-2"
     location                         = "eastus"
@@ -160,7 +160,7 @@ module "adb_ws_conf" {
 }*/
 
 
-
+/*
 data "databricks_group" "admins_ws2" {
   provider     = databricks.ws2
   display_name = "admins"
@@ -189,7 +189,7 @@ resource "databricks_group_member" "my_member_a_ws2" {
   member_id = databricks_user.me_ws2.id
 }
 
-
+*/
 data "databricks_group" "admins" {
 
   display_name = "admins"
